@@ -12,10 +12,10 @@ namespace Lab15.Models
     [Column("EmploeyyID")]
     public int EmploeyyId { get; set; }
 
-    [Column("RoleID")]
+    [Column("RoleID")]    
     public int RoleId { get; set; }
 
-    [Column("DepartmentID")]
+    [Column("DepartmentID")]    
     public int DepartmentId { get; set; }
 
     [DataMember]

@@ -18,6 +18,17 @@ namespace Lab15.Controllers
     [HttpGet]
     public IActionResult Index()
     {
+      using (var context = new AppDbContext(_configuration))
+      {
+        var role = context.Roles.Find(1);
+        var role1 = context.Roles.Find(2);
+        var roleOrder = context.Roles.OrderBy(p => p.RoleSalary).ToList();
+        var roleOrderDesc = context.Roles.OrderByDescending(p => p.RoleSalary).ToList();
+        var roleGroupBy = context.Roles.GroupBy(u => u.RoleName).Select(p => new
+        {
+          Name = p.Key,          
+        }).ToList();
+      }
       return View();
     }
 
@@ -32,7 +43,6 @@ namespace Lab15.Controllers
       }
       return RedirectToAction("Index");
     }
-
 
     public IActionResult Privacy()
     {
